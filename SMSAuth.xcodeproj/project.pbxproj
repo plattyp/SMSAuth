@@ -10,6 +10,7 @@
 		4C95F8521E3ED377008616E8 /* SMSAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C95F8481E3ED377008616E8 /* SMSAuth.framework */; };
 		4C95F8571E3ED377008616E8 /* SMSAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8561E3ED377008616E8 /* SMSAuthTests.swift */; };
 		4C95F8591E3ED377008616E8 /* SMSAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C95F84B1E3ED377008616E8 /* SMSAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C95F8661E3EDA80008616E8 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8651E3EDA80008616E8 /* BaseResponse.swift */; };
 		71EFA895C63DDA5EF6D0C68A /* Pods_SMSAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF1E788B580C099D7C96F2 /* Pods_SMSAuthTests.framework */; };
 		B7A2D8BC4878517221E8C362 /* Pods_SMSAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		4C95F8511E3ED377008616E8 /* SMSAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMSAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C95F8561E3ED377008616E8 /* SMSAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSAuthTests.swift; sourceTree = "<group>"; };
 		4C95F8581E3ED377008616E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C95F8651E3EDA80008616E8 /* BaseResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
 		970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMSAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuth.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuth/Pods-SMSAuth.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +85,9 @@
 		4C95F84A1E3ED377008616E8 /* SMSAuth */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F8641E3EDA3E008616E8 /* Models */,
+				4C95F8631E3EDA23008616E8 /* Controllers */,
+				4C95F8621E3ED9DC008616E8 /* Services */,
 				4C95F84B1E3ED377008616E8 /* SMSAuth.h */,
 				4C95F84C1E3ED377008616E8 /* Info.plist */,
 			);
@@ -96,6 +101,28 @@
 				4C95F8581E3ED377008616E8 /* Info.plist */,
 			);
 			path = SMSAuthTests;
+			sourceTree = "<group>";
+		};
+		4C95F8621E3ED9DC008616E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		4C95F8631E3EDA23008616E8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4C95F8641E3EDA3E008616E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F8651E3EDA80008616E8 /* BaseResponse.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		57B04B1AFC24BFF0884A8C03 /* Frameworks */ = {
@@ -185,6 +212,7 @@
 				TargetAttributes = {
 					4C95F8471E3ED377008616E8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					4C95F8501E3ED377008616E8 = {
@@ -311,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C95F8661E3EDA80008616E8 /* BaseResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF64F7739AE015FAEDCCE97A /* Pods-SMSAuth.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -447,6 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = plattyplabs.SMSAuth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -455,6 +486,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -474,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SMSAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = plattyplabs.SMSAuthTests;
@@ -486,6 +519,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14AFB7DF36846A6A09B81226 /* Pods-SMSAuthTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SMSAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = plattyplabs.SMSAuthTests;
@@ -513,6 +547,7 @@
 				4C95F85E1E3ED377008616E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C95F85F1E3ED377008616E8 /* Build configuration list for PBXNativeTarget "SMSAuthTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +556,7 @@
 				4C95F8611E3ED377008616E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
