@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (3.1.5)
+  - AlamofireObjectMapper (1.1.0):
+    - Alamofire (~> 3.1.0)
+    - ObjectMapper (~> 0.19)
+  - KeyClip (1.3.3)
+  - ObjectMapper (0.19)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - AlamofireObjectMapper (from `https://github.com/tristanhimmelman/AlamofireObjectMapper.git`, tag `2.0.0`)
+  - KeyClip (= 1.3.3)
+
+EXTERNAL SOURCES:
+  AlamofireObjectMapper:
+    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper.git
+    :tag: 2.0.0
+
+CHECKOUT OPTIONS:
+  AlamofireObjectMapper:
+    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper.git
+    :tag: 2.0.0
+
+SPEC CHECKSUMS:
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  AlamofireObjectMapper: d68c394056d3c46e5838faececd0d16e5fcdcb1e
+  KeyClip: ba283a3fa0ae05c0f5e27bff8e298f0f8b3bec5b
+  ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
+
+PODFILE CHECKSUM: 3f1731b3a3299cc2529e3f2348af059419528309
+
+COCOAPODS: 1.2.0

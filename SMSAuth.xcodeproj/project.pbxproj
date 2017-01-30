@@ -10,6 +10,8 @@
 		4C95F8521E3ED377008616E8 /* SMSAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C95F8481E3ED377008616E8 /* SMSAuth.framework */; };
 		4C95F8571E3ED377008616E8 /* SMSAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8561E3ED377008616E8 /* SMSAuthTests.swift */; };
 		4C95F8591E3ED377008616E8 /* SMSAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C95F84B1E3ED377008616E8 /* SMSAuth.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71EFA895C63DDA5EF6D0C68A /* Pods_SMSAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF1E788B580C099D7C96F2 /* Pods_SMSAuthTests.framework */; };
+		B7A2D8BC4878517221E8C362 /* Pods_SMSAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +25,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14AFB7DF36846A6A09B81226 /* Pods-SMSAuthTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuthTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests.release.xcconfig"; sourceTree = "<group>"; };
 		4C95F8481E3ED377008616E8 /* SMSAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SMSAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C95F84B1E3ED377008616E8 /* SMSAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSAuth.h; sourceTree = "<group>"; };
 		4C95F84C1E3ED377008616E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C95F8511E3ED377008616E8 /* SMSAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SMSAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C95F8561E3ED377008616E8 /* SMSAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSAuthTests.swift; sourceTree = "<group>"; };
 		4C95F8581E3ED377008616E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
+		970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMSAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuth.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuth/Pods-SMSAuth.release.xcconfig"; sourceTree = "<group>"; };
+		DF64F7739AE015FAEDCCE97A /* Pods-SMSAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuth.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuth/Pods-SMSAuth.debug.xcconfig"; sourceTree = "<group>"; };
+		E3AF1E788B580C099D7C96F2 /* Pods_SMSAuthTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMSAuthTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A2D8BC4878517221E8C362 /* Pods_SMSAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C95F8521E3ED377008616E8 /* SMSAuth.framework in Frameworks */,
+				71EFA895C63DDA5EF6D0C68A /* Pods_SMSAuthTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +66,8 @@
 				4C95F84A1E3ED377008616E8 /* SMSAuth */,
 				4C95F8551E3ED377008616E8 /* SMSAuthTests */,
 				4C95F8491E3ED377008616E8 /* Products */,
+				7FE13D8865EC8FADB70CD08E /* Pods */,
+				57B04B1AFC24BFF0884A8C03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +98,26 @@
 			path = SMSAuthTests;
 			sourceTree = "<group>";
 		};
+		57B04B1AFC24BFF0884A8C03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */,
+				E3AF1E788B580C099D7C96F2 /* Pods_SMSAuthTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FE13D8865EC8FADB70CD08E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF64F7739AE015FAEDCCE97A /* Pods-SMSAuth.debug.xcconfig */,
+				977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */,
+				6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */,
+				14AFB7DF36846A6A09B81226 /* Pods-SMSAuthTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -104,10 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C95F85C1E3ED377008616E8 /* Build configuration list for PBXNativeTarget "SMSAuth" */;
 			buildPhases = (
+				B39448EFEDAE2D95533278D5 /* [CP] Check Pods Manifest.lock */,
 				4C95F8431E3ED377008616E8 /* Sources */,
 				4C95F8441E3ED377008616E8 /* Frameworks */,
 				4C95F8451E3ED377008616E8 /* Headers */,
 				4C95F8461E3ED377008616E8 /* Resources */,
+				90A7EFEE40FFA4B17A98E439 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C95F85F1E3ED377008616E8 /* Build configuration list for PBXNativeTarget "SMSAuthTests" */;
 			buildPhases = (
+				3AD933F0574F70A0010608DB /* [CP] Check Pods Manifest.lock */,
 				4C95F84D1E3ED377008616E8 /* Sources */,
 				4C95F84E1E3ED377008616E8 /* Frameworks */,
 				4C95F84F1E3ED377008616E8 /* Resources */,
+				13813DB94BF485C8460B5E19 /* [CP] Embed Pods Frameworks */,
+				E24805245DCED07C62835D0C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,6 +227,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		13813DB94BF485C8460B5E19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AD933F0574F70A0010608DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90A7EFEE40FFA4B17A98E439 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SMSAuth/Pods-SMSAuth-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B39448EFEDAE2D95533278D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E24805245DCED07C62835D0C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4C95F8431E3ED377008616E8 /* Sources */ = {
@@ -319,6 +434,7 @@
 		};
 		4C95F85D1E3ED377008616E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF64F7739AE015FAEDCCE97A /* Pods-SMSAuth.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -337,6 +453,7 @@
 		};
 		4C95F85E1E3ED377008616E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -355,6 +472,7 @@
 		};
 		4C95F8601E3ED377008616E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SMSAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -366,6 +484,7 @@
 		};
 		4C95F8611E3ED377008616E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14AFB7DF36846A6A09B81226 /* Pods-SMSAuthTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SMSAuthTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
