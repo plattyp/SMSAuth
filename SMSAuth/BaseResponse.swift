@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class GenericOption: Mappable {
+class BaseResponse: Mappable {
     
     var message: String?
     var status: Bool?
@@ -18,12 +18,12 @@ class GenericOption: Mappable {
         
     }
     
-    required init?(_ map: Map){
+    required init?(map: Map){
         
     }
     
     func mapping(map: Map) {
-        id <- map["message"]
-        label <- map["status"]
+        message <- map["message"]
+        status <- map["status"]
     }
 }

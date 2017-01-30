@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
   s.homepage = "https://github.com/plattyp/SMSAuth"
   s.source = { :git => "git@github.com:plattyp/SMSAuth.git", :tag => "#{s.version}"}
 
-  s.dependency 'Alamofire', '~> 3.0'
-  s.dependency 'KeyClip', '~> 1.3.3'
-  s.dependency 'AlamofireObjectMapper', '~> 2.0'
+  s.dependency 'Alamofire', '4.1.0'
+  s.dependency 'KeyClip', :git => 'https://github.com/s-aska/KeyClip', tag: '1.4.2'
+  s.dependency 'AlamofireObjectMapper', '4.0.1'
 
   s.source_files = "SMSAuth/**/*.{swift}"
   s.resources = "SMSAuth/**/*.{png,jpeg,jpg,storyboard,xib}"

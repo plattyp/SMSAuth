@@ -10,34 +10,34 @@ import Foundation
 
 public extension KeyClip {
     public class Ring {
-        
+
         let accessGroup: String?
         let service: String
         let accessible: String
-        
+
         // MARK: Initializer
-        
+
         init(accessGroup: String?, service: String, accessible: String) {
             self.accessGroup = accessGroup
             self.service = service
             self.accessible = accessible
         }
-        
+
         // MARK: Public Methods
-        
-        public func exists(key: String, failure: ((NSError) -> Void)? = nil) -> Bool {
+
+        open func exists(_ key: String, failure: ((NSError) -> Void)? = nil) -> Bool {
             var query: [String: AnyObject] = [
-                kSecAttrService as String : self.service,
+                kSecAttrService as String : self.service as AnyObject,
                 kSecClass       as String : kSecClassGenericPassword,
-                kSecAttrAccount as String : key,
-                kSecAttrGeneric as String : key ]
-            
+                kSecAttrAccount as String : key as AnyObject,
+                kSecAttrGeneric as String : key as AnyObject ]
+
             if let accessGroup = self.accessGroup {
-                query[kSecAttrAccessGroup as String] = accessGroup
+                query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
             }
-            
-            let status = SecItemCopyMatching(query, nil)
-            
+
+            let status = SecItemCopyMatching(query as CFDictionary, nil)
+
             switch status {
             case errSecSuccess:
                 return true
@@ -48,176 +48,180 @@ public extension KeyClip {
                 return false
             }
         }
-        
-        public func save(key: String, data: NSData, failure: ((NSError) -> Void)? = nil) -> Bool {
+
+        open func save(_ key: String, data: Data, failure: ((NSError) -> Void)? = nil) -> Bool {
             var query: [String: AnyObject] = [
-                kSecAttrService as String : self.service,
+                kSecAttrService as String : self.service as AnyObject,
                 kSecClass       as String : kSecClassGenericPassword,
-                kSecAttrAccount as String : key,
-                kSecAttrGeneric as String : key ]
-            
+                kSecAttrAccount as String : key as AnyObject,
+                kSecAttrGeneric as String : key as AnyObject ]
+
             if let accessGroup = self.accessGroup {
-                query[kSecAttrAccessGroup as String] = accessGroup
+                query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
             }
-            
+
             var status: OSStatus
-            
+
             if self.exists(key, failure: failure) {
-                status = SecItemUpdate(query, [kSecValueData as String: data])
+                status = SecItemUpdate(query as CFDictionary, [kSecValueData as String: data] as CFDictionary)
             } else {
-                query[kSecAttrAccessible as String] = self.accessible
-                query[kSecValueData as String] = data
-                status = SecItemAdd(query as CFDictionaryRef, nil)
+                query[kSecAttrAccessible as String] = self.accessible as AnyObject?
+                query[kSecValueData as String] = data as AnyObject?
+                status = SecItemAdd(query as CFDictionary, nil)
             }
-            
-            if status == errSecSuccess {
+
+            switch status {
+            case errSecSuccess:
                 return true
-            } else {
+            default:
                 self.failure(status: status, failure: failure)
+                return false
             }
-            return false
         }
-        
-        public func save(key: String, string: String, failure: ((NSError) -> Void)? = nil) -> Bool {
-            if let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+
+        open func save(_ key: String, string: String, failure: ((NSError) -> Void)? = nil) -> Bool {
+            if let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false) {
                 return self.save(key, data: data, failure: failure)
             }
             return false
         }
-        
-        public func save(key: String, dictionary: NSDictionary, failure: ((NSError) -> Void)? = nil) -> Bool {
-            var error: NSError?
+
+        open func save(_ key: String, dictionary: NSDictionary, failure: ((NSError) -> Void)? = nil) -> Bool {
             do {
-                let data = try NSJSONSerialization.dataWithJSONObject(dictionary, options: [])
-                if let e = error {
-                    self.failure(error: e, failure: failure)
-                }
+                let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
                 return self.save(key, data: data, failure: failure)
-            } catch let error1 as NSError {
-                error = error1
+            } catch let error as NSError {
+                self.failure(error: error, failure: failure)
             }
             return false
         }
-        
-        public func load(key: String, failure: ((NSError) -> Void)? = nil) -> NSData? {
+
+        open func load(_ key: String, failure: ((NSError) -> Void)? = nil) -> Data? {
             var query: [String: AnyObject] = [
-                kSecAttrService as String : self.service,
+                kSecAttrService as String : self.service as AnyObject,
                 kSecClass       as String : kSecClassGenericPassword,
-                kSecAttrAccount as String : key,
-                kSecAttrGeneric as String : key,
+                kSecAttrAccount as String : key as AnyObject,
+                kSecAttrGeneric as String : key as AnyObject,
                 kSecReturnData  as String : kCFBooleanTrue,
                 kSecMatchLimit  as String : kSecMatchLimitOne ]
-            
+
             if let accessGroup = self.accessGroup {
-                query[kSecAttrAccessGroup as String] = accessGroup
+                query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
             }
-            
+
             var result: AnyObject?
-            let status = withUnsafeMutablePointer(&result) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
-            
-            if status == errSecSuccess {
-                if let data = result as? NSData {
+            let status = withUnsafeMutablePointer(to: &result) { SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer($0)) }
+
+            switch status {
+            case errSecSuccess:
+                if let data = result as? Data {
                     return data
                 }
-            } else if status != errSecItemNotFound {
+                return nil
+            case errSecItemNotFound:
+                return nil
+            default:
                 self.failure(status: status, failure: failure)
+                return nil
             }
-            return nil
         }
-        
-        public func load(key: String, failure: ((NSError) -> Void)? = nil) -> NSDictionary? {
-            var error: NSError?
-            if let data: NSData = self.load(key, failure: failure) {
+
+        open func load(_ key: String, failure: ((NSError) -> Void)? = nil) -> NSDictionary? {
+            if let data: Data = self.load(key, failure: failure) {
                 do {
-                    let json: AnyObject = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-                    if let e = error {
-                        self.failure(error: e, failure: failure)
-                    }
+                    let json: Any = try JSONSerialization.jsonObject(with: data, options: [])
                     return json as? NSDictionary
-                } catch let error1 as NSError {
-                    error = error1
+                } catch let error as NSError {
+                    self.failure(error: error, failure: failure)
                 }
             }
             return nil
         }
-        
-        public func load(key: String, failure: ((NSError) -> Void)? = nil) -> String? {
-            if let data: NSData = self.load(key, failure: failure) {
-                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
+
+        open func load(_ key: String, failure: ((NSError) -> Void)? = nil) -> String? {
+            if let data: Data = self.load(key, failure: failure) {
+                if let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
                     return string as String
                 }
             }
             return nil
         }
-        
-        public func load<T>(key: String, success: (NSDictionary) -> T, failure: ((NSError) -> Void)?) -> T? {
+
+        open func load<T>(_ key: String, success: (NSDictionary) -> T, failure: ((NSError) -> Void)?) -> T? {
             if let dictionary: NSDictionary = self.load(key) {
                 return success(dictionary)
             }
             return nil
         }
-        
-        public func load<T>(key: String, success: (NSDictionary) -> T) -> T? {
+
+        open func load<T>(_ key: String, success: (NSDictionary) -> T) -> T? {
             return self.load(key, success: success, failure: nil)
         }
-        
-        public func delete(key: String, failure: ((NSError) -> Void)? = nil) -> Bool {
+
+        open func delete(_ key: String, failure: ((NSError) -> Void)? = nil) -> Bool {
             var query: [String: AnyObject] = [
-                kSecAttrService as String : self.service,
+                kSecAttrService as String : self.service as AnyObject,
                 kSecClass       as String : kSecClassGenericPassword,
-                kSecAttrAccount as String : key,
-                kSecAttrGeneric as String : key ]
-            
+                kSecAttrAccount as String : key as AnyObject,
+                kSecAttrGeneric as String : key as AnyObject ]
+
             if let accessGroup = self.accessGroup {
-                query[kSecAttrAccessGroup as String] = accessGroup
+                query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
             }
-            
-            let status = SecItemDelete(query as CFDictionaryRef)
-            
-            if status == errSecSuccess {
+
+            let status = SecItemDelete(query as CFDictionary)
+
+            switch status {
+            case errSecSuccess:
                 return true
-            } else  if status != errSecItemNotFound {
+            case errSecItemNotFound:
+                return false
+            default:
                 self.failure(status: status, failure: failure)
+                return false
             }
-            return false
         }
-        
-        public func clear(failure failure: ((NSError) -> Void)? = nil) -> Bool {
+
+        open func clear(_ failure: ((NSError) -> Void)? = nil) -> Bool {
             var query: [String: AnyObject] = [
-                kSecAttrService as String : self.service,
+                kSecAttrService as String : self.service as AnyObject,
                 kSecClass       as String : kSecClassGenericPassword ]
-            
+
             if let accessGroup = self.accessGroup {
-                query[kSecAttrAccessGroup as String] = accessGroup
+                query[kSecAttrAccessGroup as String] = accessGroup as AnyObject?
             }
-            
-            let status = SecItemDelete(query as CFDictionaryRef)
-            
-            if status == errSecSuccess {
+
+            let status = SecItemDelete(query as CFDictionary)
+
+            switch status {
+            case errSecSuccess:
                 return true
-            } else  if status != errSecItemNotFound {
+            case errSecItemNotFound:
+                return false
+            default:
                 self.failure(status: status, failure: failure)
+                return false
             }
-            return false
         }
-        
+
         // MARK: Private Methods
-        
-        private func failure(status status: OSStatus, function: String = __FUNCTION__, line: Int = __LINE__, failure: ((NSError) -> Void)?) {
+
+        fileprivate func failure(status: OSStatus, function: String = #function, line: Int = #line, failure: ((NSError) -> Void)?) {
             let userInfo = [ NSLocalizedDescriptionKey : statusMessage(status) ]
             self.failure(error: NSError(domain: "pw.aska.KeyClip", code: Int(status), userInfo: userInfo), function: function, line: line, failure: failure)
         }
-        
-        private func failure(error error: NSError, function: String = __FUNCTION__, line: Int = __LINE__, failure: ((NSError) -> Void)?) {
+
+        fileprivate func failure(error: NSError, function: String = #function, line: Int = #line, failure: ((NSError) -> Void)?) {
             failure?(error)
-            
+
             if KeyClip.printError {
                 NSLog("[KeyClip] function:\(function) line:\(line) \(error.debugDescription)")
             }
         }
-        
+
         // /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Security.framework/Headers/SecBase.h
-        private func statusMessage(status: OSStatus) -> String {
+        // swiftlint:disable:next cyclomatic_complexity
+        fileprivate func statusMessage(_ status: OSStatus) -> String {
             #if os(iOS)
                 switch status {
                 case errSecUnimplemented:
