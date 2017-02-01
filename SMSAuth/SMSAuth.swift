@@ -8,11 +8,11 @@
 
 import Foundation
 
-class SMSAuth {
+public class SMSAuth {
     
     private static var apiPathKey: String = "sms_auth_api_path"
     
-    class func setApiPath(path: String) {
+    public class func setApiPath(path: String) {
         UserDefaults.standard.setValue(path, forKey: apiPathKey)
     }
     

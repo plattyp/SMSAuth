@@ -16,6 +16,12 @@
 		4C95F86C1E3EEBB4008616E8 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F86B1E3EEBB4008616E8 /* BaseService.swift */; };
 		4C95F86E1E3EF0C5008616E8 /* SMSAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F86D1E3EF0C5008616E8 /* SMSAuth.swift */; };
 		4C95F8711E3EF88C008616E8 /* SMSAuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8701E3EF88C008616E8 /* SMSAuthError.swift */; };
+		4C95F8731E40263C008616E8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8721E40263C008616E8 /* LoginViewController.swift */; };
+		4C95F8761E40278C008616E8 /* SquaredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8751E40278C008616E8 /* SquaredButton.swift */; };
+		4C95F8781E40296B008616E8 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8771E40296B008616E8 /* TextFieldView.swift */; };
+		4C95F87A1E402987008616E8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8791E402987008616E8 /* Config.swift */; };
+		4C95F8BB1E419B39008616E8 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C95F8BA1E419B39008616E8 /* NotificationView.swift */; };
+		4C95F8BE1E419C03008616E8 /* CrossIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4C95F8BD1E419C03008616E8 /* CrossIcon.pdf */; };
 		71EFA895C63DDA5EF6D0C68A /* Pods_SMSAuthTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3AF1E788B580C099D7C96F2 /* Pods_SMSAuthTests.framework */; };
 		B7A2D8BC4878517221E8C362 /* Pods_SMSAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
@@ -44,6 +50,16 @@
 		4C95F86B1E3EEBB4008616E8 /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		4C95F86D1E3EF0C5008616E8 /* SMSAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSAuth.swift; sourceTree = "<group>"; };
 		4C95F8701E3EF88C008616E8 /* SMSAuthError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSAuthError.swift; sourceTree = "<group>"; };
+		4C95F8721E40263C008616E8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C95F8751E40278C008616E8 /* SquaredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaredButton.swift; sourceTree = "<group>"; };
+		4C95F8771E40296B008616E8 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		4C95F8791E402987008616E8 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4C95F8B61E405844008616E8 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		4C95F8B71E405861008616E8 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		4C95F8B81E40586F008616E8 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		4C95F8B91E405888008616E8 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		4C95F8BA1E419B39008616E8 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		4C95F8BD1E419C03008616E8 /* CrossIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CrossIcon.pdf; sourceTree = "<group>"; };
 		6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
 		970FA51D378362F5A18E814D /* Pods_SMSAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMSAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		977F5CE319E3BD86808FCB5C /* Pods-SMSAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuth.release.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuth/Pods-SMSAuth.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +111,9 @@
 		4C95F84A1E3ED377008616E8 /* SMSAuth */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F8BC1E419BDB008616E8 /* Images */,
+				4C95F8B51E4057DB008616E8 /* Fonts */,
+				4C95F8741E402762008616E8 /* Views */,
 				4C95F86F1E3EF85E008616E8 /* Exceptions */,
 				4C95F8641E3EDA3E008616E8 /* Models */,
 				4C95F8631E3EDA23008616E8 /* Controllers */,
@@ -102,6 +121,7 @@
 				4C95F84B1E3ED377008616E8 /* SMSAuth.h */,
 				4C95F84C1E3ED377008616E8 /* Info.plist */,
 				4C95F86D1E3EF0C5008616E8 /* SMSAuth.swift */,
+				4C95F8791E402987008616E8 /* Config.swift */,
 			);
 			path = SMSAuth;
 			sourceTree = "<group>";
@@ -127,6 +147,7 @@
 		4C95F8631E3EDA23008616E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C95F8721E40263C008616E8 /* LoginViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -146,6 +167,35 @@
 				4C95F8701E3EF88C008616E8 /* SMSAuthError.swift */,
 			);
 			name = Exceptions;
+			sourceTree = "<group>";
+		};
+		4C95F8741E402762008616E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F8751E40278C008616E8 /* SquaredButton.swift */,
+				4C95F8771E40296B008616E8 /* TextFieldView.swift */,
+				4C95F8BA1E419B39008616E8 /* NotificationView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4C95F8B51E4057DB008616E8 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F8B81E40586F008616E8 /* OpenSans-Light.ttf */,
+				4C95F8B91E405888008616E8 /* OpenSans-Italic.ttf */,
+				4C95F8B71E405861008616E8 /* OpenSans-Semibold.ttf */,
+				4C95F8B61E405844008616E8 /* OpenSans-Regular.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		4C95F8BC1E419BDB008616E8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4C95F8BD1E419C03008616E8 /* CrossIcon.pdf */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		57B04B1AFC24BFF0884A8C03 /* Frameworks */ = {
@@ -267,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C95F8BE1E419C03008616E8 /* CrossIcon.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,12 +413,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C95F8731E40263C008616E8 /* LoginViewController.swift in Sources */,
 				4C95F86C1E3EEBB4008616E8 /* BaseService.swift in Sources */,
 				4C95F86A1E3EEB71008616E8 /* AuthenticationService.swift in Sources */,
+				4C95F8BB1E419B39008616E8 /* NotificationView.swift in Sources */,
 				4C95F8681E3EE9FC008616E8 /* AuthResponse.swift in Sources */,
 				4C95F86E1E3EF0C5008616E8 /* SMSAuth.swift in Sources */,
 				4C95F8711E3EF88C008616E8 /* SMSAuthError.swift in Sources */,
 				4C95F8661E3EDA80008616E8 /* BaseResponse.swift in Sources */,
+				4C95F87A1E402987008616E8 /* Config.swift in Sources */,
+				4C95F8761E40278C008616E8 /* SquaredButton.swift in Sources */,
+				4C95F8781E40296B008616E8 /* TextFieldView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

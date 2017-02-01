@@ -46,9 +46,9 @@ class BaseService {
         return ""
     }
     
-    func parseBaseResponse(response: BaseResponse?) -> (Bool, String?) {
-        if let status = response?.status {
-            if (status) {
+    func parseBaseResponse(response: BaseResponse?) -> (Bool, String?) {        
+        if let success = response?.success {
+            if (success) {
                 return (true, nil)
             } else {
                 if let message = response?.message {

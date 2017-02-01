@@ -1,0 +1,44 @@
+//
+//  BaseAppDelegate.h
+//  BetterBaseClasses
+//
+//  Created by Joshua Greene on 4/16/15.
+//  Copyright (c) 2015 Joshua Greene. All rights reserved.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
+
+#import <UIKit/UIKit.h>
+
+/**
+ *  @brief  `BaseAppDelegate` is an abstract class meant to be subclassed by your app delegate, instead of `UIResponder` directly.
+ *
+ *  @discussion  This class fixes inconsistencies in app notifications. 
+ *
+ *  For example, it sends out a notifications whenever it receives a call to `application: didRegisterUserNotificationSettings:`.
+ * 
+ *  @note  This class is intetionally NOT marked as an "audited region" (that is, `NS_ASSUME_NONNULL_BEGIN` / `NS_ASSUME_NONNULL_END`), so that `window` will be a forced unwrapped optional when automatically converted into Swift.
+ */
+@interface BaseAppDelegate : UIResponder <UIApplicationDelegate>
+
+/**
+ *  @brief  The main application window
+ */
+@property (strong, nonatomic) UIWindow *window;
+
+@end

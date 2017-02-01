@@ -3,30 +3,36 @@ PODS:
   - AlamofireObjectMapper (4.0.1):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 2.0)
+  - BetterBaseClasses (1.15.1):
+    - BetterBaseClasses/Categories (= 1.15.1)
+    - BetterBaseClasses/Constants (= 1.15.1)
+    - BetterBaseClasses/Controllers (= 1.15.1)
+    - BetterBaseClasses/Views (= 1.15.1)
+  - BetterBaseClasses/Categories (1.15.1)
+  - BetterBaseClasses/Constants (1.15.1)
+  - BetterBaseClasses/Controllers (1.15.1):
+    - BetterBaseClasses/Categories
+    - BetterBaseClasses/Constants
+  - BetterBaseClasses/Views (1.15.1)
   - KeyClip (1.4.0)
   - ObjectMapper (2.2.2)
+  - SwiftOverlays (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (= 4.1.0)
   - AlamofireObjectMapper (= 4.0.1)
-  - KeyClip (from `https://github.com/s-aska/KeyClip`, tag `1.4.2`)
-
-EXTERNAL SOURCES:
-  KeyClip:
-    :git: https://github.com/s-aska/KeyClip
-    :tag: 1.4.2
-
-CHECKOUT OPTIONS:
-  KeyClip:
-    :git: https://github.com/s-aska/KeyClip
-    :tag: 1.4.2
+  - BetterBaseClasses (~> 1.0)
+  - KeyClip (= 1.4.0)
+  - SwiftOverlays (~> 3.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: e266cf991b933498df791e645e0d8ac294492153
   AlamofireObjectMapper: 842d2eed43a4d0593ff0110d54ac86a170c4519c
-  KeyClip: 40b09b56e16ba0957aa15b24d36601879c9c27d7
+  BetterBaseClasses: b424525f3ed684ee0779c84b6c404386c1c3fd2e
+  KeyClip: 2768bf4e68dac11f96efaa666c63a8eb14d4b866
   ObjectMapper: 9e385c2295bcc4e16eabbcfc85db801442bba545
+  SwiftOverlays: 4cdd9e4f5c7817fb6348882059eb697e11685fad
 
-PODFILE CHECKSUM: 7f0efe7a2b5b50846fbceaba8a70041a079092ba
+PODFILE CHECKSUM: 0fe70cf35f6b782b1560e446e479c9a409cd2c21
 
 COCOAPODS: 1.2.0

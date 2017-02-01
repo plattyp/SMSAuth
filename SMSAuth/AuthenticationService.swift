@@ -17,7 +17,7 @@ class AuthenticationService: BaseService {
         do {
             return try baseApiPath() + "/auth"
         } catch {
-            print("BASE API PATH not set properly")
+            print("API PATH not set properly")
         }
         return ""
     }
@@ -28,6 +28,8 @@ class AuthenticationService: BaseService {
         let parameters = [
             "phone_number": phoneNum
         ]
+        
+        print(url)
         
         alamoFireManager.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headersWithoutToken)
             .responseObject { (response: DataResponse<BaseResponse>) in
@@ -57,7 +59,7 @@ class AuthenticationService: BaseService {
                 } else {
                     let authResponse = response.result.value
                     
-                    if let status = authResponse?.status {
+                    if let status = authResponse?.success {
                         if (status) {
                             // Save Token For Use Later
                             if let authToken = authResponse?.authenticationToken {

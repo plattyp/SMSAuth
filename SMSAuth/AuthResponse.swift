@@ -17,7 +17,7 @@ class AuthResponse: BaseResponse {
     
     override func mapping(map: Map) {
         message <- map["message"]
-        status <- map["status"]
+        success <- map["success"]
         authenticationToken <- map["authentication_token"]
         userId <- map["user_id"]
         newUser <- map["new_user"]

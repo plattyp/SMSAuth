@@ -1,0 +1,6 @@
+framework module BetterBaseClasses {
+  umbrella header "BetterBaseClasses-umbrella.h"
+
+  export *
+  module * { export * }
+}

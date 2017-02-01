@@ -12,7 +12,7 @@ import ObjectMapper
 class BaseResponse: Mappable {
     
     var message: String?
-    var status: Bool?
+    var success: Bool?
     
     init() {
         
@@ -24,6 +24,6 @@ class BaseResponse: Mappable {
     
     func mapping(map: Map) {
         message <- map["message"]
-        status <- map["status"]
+        success <- map["success"]
     }
 }

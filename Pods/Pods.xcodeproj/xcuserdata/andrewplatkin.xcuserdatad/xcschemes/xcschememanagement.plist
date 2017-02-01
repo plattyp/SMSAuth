@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BetterBaseClasses.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KeyClip.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,10 +39,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftOverlays.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0F25CA0E7A0BABDAAE656452A5487145</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>17397675D970AADCEB6BA59A823EFE12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EFEBF31880699669B89B81903B6ADB2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,22 +67,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5D1FE4EEBF63B92188E17965D6C49874</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>677DE74A6216B6C68B92D0E7AE438994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F19318E3DFF7D7FD54CEC372E277345</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>9502FB01641FBABB78522037E882757B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8F2ED6C815F725E111364A204AB27BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
