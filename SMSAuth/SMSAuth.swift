@@ -17,11 +17,11 @@ public class SMSAuth {
         UserDefaults.standard.setValue(path, forKey: apiPathKey)
     }
     
-    public class func showViewController(window: UIWindow?, authenticateViewController: UIViewController, unauthenticatedViewController: LoginViewController) {
+    public class func showViewController(window: UIWindow?, authenticateViewController: UIViewController, loginViewController: LoginViewController) {
         if isAuthenticated() {
             window?.rootViewController = UINavigationController(rootViewController: authenticateViewController)
         } else {
-            window?.rootViewController = UINavigationController(rootViewController: unauthenticatedViewController)
+            window?.rootViewController = UINavigationController(rootViewController: loginViewController)
         }
         
         window?.makeKeyAndVisible()
