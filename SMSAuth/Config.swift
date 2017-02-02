@@ -10,6 +10,12 @@ import Foundation
 
 class Config {
     
+    class values {
+        class var tokenKey: String {
+            return "authentication_token"
+        }
+    }
+    
     class color {
         
         // Blue Colors

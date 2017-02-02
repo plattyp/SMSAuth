@@ -21,14 +21,18 @@ class TextFieldView: UITextField {
     var isRequired: Bool = false
     var characterLimit: Int = 10
     
-    init(placeholderText: String, isRequired: Bool, isPhoneNum: Bool) {
+    init(placeholderText: String, isRequired: Bool, isPhoneNum: Bool, useNumberPad: Bool) {
         super.init(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         configureTextField()
         
-        // Setup Keypad
+        // Setup Masking
         if (isPhoneNum) {
-            self.keyboardType = .numberPad
             self.validatePhoneNum = true
+        }
+        
+        // Setup Keyboard
+        if (useNumberPad) {
+            self.keyboardType = .numberPad
         }
         
         
@@ -68,6 +72,12 @@ class TextFieldView: UITextField {
     func textFieldDidChange(textField: UITextField) {
         _ = validatePresence()
     }
+
+    // Revert To Valid
+    func revertAsNew() {
+        self.text = nil
+        self.backgroundColor = UIColor.white
+    }
     
     // Validation If Required
     func validatePresence() -> Bool {
@@ -89,5 +99,4 @@ class TextFieldView: UITextField {
             }
         }
     }
-
 }

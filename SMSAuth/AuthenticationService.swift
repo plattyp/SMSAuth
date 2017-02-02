@@ -22,7 +22,7 @@ class AuthenticationService: BaseService {
         return ""
     }
     
-    func login(phoneNum: String, callback:@escaping (Bool, String?) -> Void) {
+    func login(phoneNum: String, callback:@escaping (Bool, String) -> Void) {
         let url = baseAuthPath() + "/login"
         
         let parameters = [
@@ -43,7 +43,7 @@ class AuthenticationService: BaseService {
         }
     }
     
-    func verifyPhone(verificationToken: String, phoneNum: String, callback:@escaping (Bool, String?, Int?, Bool?) -> Void) {
+    func verifyPhone(verificationToken: String, phoneNum: String, callback:@escaping (Bool, String, Int, Bool) -> Void) {
         let url = baseAuthPath() + "/verify"
         
         let parameters = [
@@ -55,7 +55,7 @@ class AuthenticationService: BaseService {
             .responseObject { (response: DataResponse<AuthResponse>) in
                 
                 if (response.result.error != nil) {
-                    callback(false,  "Something went wrong", nil, nil)
+                    callback(false,  "Something went wrong", 0, false)
                 } else {
                     let authResponse = response.result.value
                     
@@ -75,20 +75,20 @@ class AuthenticationService: BaseService {
                             if let unwrappedNewUser = authResponse?.newUser {
                                 newUser = unwrappedNewUser
                             }
-                            callback(true, nil, userId, newUser)
+                            callback(true, "", userId, newUser)
                         } else {
                             if let message = authResponse?.message {
-                                callback(false, message, nil, nil)
+                                callback(false, message, 0, false)
                             }
                         }
                     } else {
-                        callback(false,  "Something went wrong", nil, nil)
+                        callback(false,  "Something went wrong", 0, false)
                     }
                 }
         }
     }
     
-    func logout(callback: @escaping (Bool, String?) -> Void) {
+    func logout(callback: @escaping (Bool, String) -> Void) {
         let url = baseAuthPath() + "/logout"
         
         alamoFireManager.request(url, method: .delete, encoding: JSONEncoding.default, headers: headersWithToken())
@@ -100,6 +100,9 @@ class AuthenticationService: BaseService {
                     let (status, message) = self.parseBaseResponse(response: response.result.value)
                     callback(status, message)
                 }
+                
+                // Regardless Of Response Kill Token
+                self.removeAuthenticationToken()
         }
     }
     

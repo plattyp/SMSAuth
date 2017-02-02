@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import KeyClip
 
 public class SMSAuth {
     
@@ -14,6 +15,32 @@ public class SMSAuth {
     
     public class func setApiPath(path: String) {
         UserDefaults.standard.setValue(path, forKey: apiPathKey)
+    }
+    
+    public class func showViewController(window: UIWindow?, authenticateViewController: UIViewController, unauthenticatedViewController: LoginViewController) {
+        if isAuthenticated() {
+            window?.rootViewController = UINavigationController(rootViewController: authenticateViewController)
+        } else {
+            window?.rootViewController = UINavigationController(rootViewController: unauthenticatedViewController)
+        }
+        
+        window?.makeKeyAndVisible()
+    }
+    
+    public class func isAuthenticated() -> Bool {
+        return KeyClip.exists(Config.values.tokenKey)
+    }
+    
+    public class func logout(callback: @escaping (Bool, String) -> Void) {
+        AuthenticationService().logout(callback: callback)
+    }
+    
+    public class func revertToLogin() {
+        OperationQueue.main.addOperation {
+            let currentVC = UIApplication.shared.keyWindow?.rootViewController
+            currentVC?.dismiss(animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController = LoginViewController()
+        }
     }
     
     class func apiPathDefined() -> Bool {

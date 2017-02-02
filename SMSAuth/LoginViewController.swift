@@ -10,9 +10,8 @@ import UIKit
 import SwiftOverlays
 import BetterBaseClasses
 
-protocol LoginViewDelegate: class {
-    func onPhoneVerifyError(error: String)
-    func onPhoneVerifySuccess(success: String)
+public protocol LoginViewDelegate {
+    func onLoginSuccess(userId: Int, newUser: Bool)
 }
 public class LoginViewController: BaseViewController, UITextFieldDelegate {
 
@@ -29,13 +28,15 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
     // Dynamic Controls
     var mainTextLabel: UILabel = UILabel(frame: CGRect.zero)
     var mainActionButton: SquaredButton = SquaredButton()
-    var mainInput: TextFieldView = TextFieldView(placeholderText: "Phone Number", isRequired: true, isPhoneNum: true)
-    var verificationInput: TextFieldView = TextFieldView(placeholderText: "Verification Code", isRequired: true, isPhoneNum: false)
+    var mainInput: TextFieldView = TextFieldView(placeholderText: "Phone Number", isRequired: true, isPhoneNum: true, useNumberPad: true)
+    var verificationInput: TextFieldView = TextFieldView(placeholderText: "Verification Code", isRequired: true, isPhoneNum: false, useNumberPad: true)
+    var backButton: SquaredButton = SquaredButton()
+    var verifyButton: SquaredButton = SquaredButton()
     
     // Variables
-    var delegate: LoginViewDelegate?
+    public var delegate: LoginViewDelegate?
     public var phoneSubmitButtonText = "SEND"
-    public var phoneDigitLimit = 10
+    public var verificationCodeLimit = 6
     public var phoneInputEmptyText = "(312) 555-5555"
     public var phoneNumberInstruction = "Enter your phone number and we will send you a secure verification code"
     public var verifyEmptyText = "Verification Code"
@@ -46,6 +47,11 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        
+        // End Editing When Tapping Outside Input
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        self.view.addGestureRecognizer(tap)
+        
         setupView()
     }
 
@@ -58,6 +64,7 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         
         // Setup Delegation
         mainInput.delegate = self
+        verificationInput.delegate = self
         
         // Setup Navigation
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -90,9 +97,7 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         NSLayoutConstraint.activate([centerXTextLabel, centerYTextLabel, widthTextLabel])
         
         // Add Phone Input
-        mainInput.delegate = self
         mainInput.placeholder = phoneInputEmptyText
-        mainInput.characterLimit = phoneDigitLimit
         self.view.addSubview(mainInput)
         
         // Constrain Phone Input
@@ -118,7 +123,7 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         NSLayoutConstraint.activate([centerXMainActionButton, widthMainActionButton, heightMainActionButton, topMainActionButton])
         
         // Add Verification Input
-        verificationInput.delegate = self
+        verificationInput.characterLimit = verificationCodeLimit
         verificationInput.placeholder = verifyEmptyText
         verificationInput.isHidden = true
         self.view.addSubview(verificationInput)
@@ -130,6 +135,37 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         let widthVerifyInput = NSLayoutConstraint(item: verificationInput, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 0.90, constant: 0)
         let heightVerifyInput = NSLayoutConstraint(item: verificationInput, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
         NSLayoutConstraint.activate([centerXVerifyInput, topVerifyInput, widthVerifyInput, heightVerifyInput])
+        
+        //// Setup Verification Buttons
+        
+        // Add Back Button
+        backButton = SquaredButton(frame: CGRect.zero, text: "BACK")
+        backButton.setSlateBlue()
+        backButton.addTarget(self, action: #selector(onBackSelected), for: .touchUpInside)
+        backButton.isHidden = true
+        self.view.addSubview(backButton)
+        
+        // Add Verify Button
+        verifyButton = SquaredButton(frame: CGRect.zero, text: verifySubmitButtonText)
+        verifyButton.setAsGreen()
+        verifyButton.addTarget(self, action: #selector(onVerifySelected), for: .touchUpInside)
+        verifyButton.isHidden = true
+        self.view.addSubview(verifyButton)
+        
+        // Constrain Buttons
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        let topBackButton = NSLayoutConstraint(item: backButton, attribute: .top, relatedBy: .equal, toItem: mainInput, attribute: .bottom, multiplier: 1, constant: 20)
+        let heightBackButton = NSLayoutConstraint(item: backButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
+        let leftBackButton = NSLayoutConstraint(item: backButton, attribute: .left, relatedBy: .equal, toItem: verificationInput, attribute: .left, multiplier: 1, constant: 0)
+        let widthBackButton = NSLayoutConstraint(item: backButton, attribute: .width, relatedBy: .equal, toItem: verificationInput, attribute: .width, multiplier: 0.47, constant: 0)
+        NSLayoutConstraint.activate([topBackButton, heightBackButton, leftBackButton, widthBackButton])
+        
+        verifyButton.translatesAutoresizingMaskIntoConstraints = false
+        let topVerifyButton = NSLayoutConstraint(item: verifyButton, attribute: .top, relatedBy: .equal, toItem: mainInput, attribute: .bottom, multiplier: 1, constant: 20)
+        let heightVerifyButton = NSLayoutConstraint(item: verifyButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 75)
+        let rightVerifyButton = NSLayoutConstraint(item: verifyButton, attribute: .right, relatedBy: .equal, toItem: verificationInput, attribute: .right, multiplier: 1, constant: 0)
+        let widthVerifyButton = NSLayoutConstraint(item: verifyButton, attribute: .width, relatedBy: .equal, toItem: verificationInput, attribute: .width, multiplier: 0.47, constant: 0)
+        NSLayoutConstraint.activate([topVerifyButton, heightVerifyButton, rightVerifyButton, widthVerifyButton])
     }
     
     func onClose() {
@@ -156,9 +192,7 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
             
             // Report Status
             if (!status) {
-                if let error = errorMsg {
-                    self.showError(errorMessage: error)
-                }
+                self.showError(errorMessage: errorMsg)
             } else {
                 self.switchToVerificationMode(phoneNum: phoneNum)
             }
@@ -177,19 +211,48 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         self.mainInput.isHidden = true
         self.verificationInput.isHidden = false
         
-        // Switch Submit Button and Action
-        self.mainActionButton.setTitle(verifySubmitButtonText, for: .normal)
-        self.mainActionButton.setAsGreen()
-        self.mainActionButton.removeTarget(self, action: #selector(onPhoneSubmit), for: .touchUpInside)
-        self.mainActionButton.addTarget(self, action: #selector(onVerifySubmit), for: .touchUpInside)
-    }
-    
-    func onVerifySubmit() {
-        print("VERIFY SUBMIT")
-    }
-    
-    func switchBackToPhoneInputMode() {
+        // Clear Input Cache
+        self.verificationInput.revertAsNew()
         
+        // Switch Submit Buttons
+        self.mainActionButton.isHidden = true
+        self.backButton.isHidden = false
+        self.verifyButton.isHidden = false
+    }
+    
+    func onBackSelected() {
+        // Switch Text
+        self.mainTextLabel.text = phoneNumberInstruction
+        
+        // Switch Input
+        self.mainInput.isHidden = false
+        self.verificationInput.isHidden = true
+        
+        // Switch Submit Buttons
+        self.mainActionButton.isHidden = false
+        self.backButton.isHidden = true
+        self.verifyButton.isHidden = true
+    }
+    
+    func onVerifySelected() {
+        if let phoneNumber = self.phoneNumber {
+            if let verificationToken = verificationInput.text {
+                SwiftOverlays.showBlockingWaitOverlayWithText("Verifying..")
+                authService.verifyPhone(verificationToken: verificationToken, phoneNum: phoneNumber, callback: {
+                    (success, errorMsg, userId, newUser) -> Void in
+                    
+                    // Kill Overlay
+                    SwiftOverlays.removeAllBlockingOverlays()
+                    
+                    if (success) {
+                        self.showSuccessMessage(successMessage: "Successfully logged in")
+                        self.delegate?.onLoginSuccess(userId: userId, newUser: newUser)
+                    } else {
+                        self.showError(errorMessage: errorMsg)
+                    }
+                })
+            }
+        }
     }
     
     // Top Notification Overlays
@@ -233,7 +296,8 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         return true;
     }
     
-    func handleExtTouch() {
+    // Hide keyboard on external touch
+    func endEditing() {
         self.view.endEditing(true)
     }
     

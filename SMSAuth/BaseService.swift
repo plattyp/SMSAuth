@@ -39,17 +39,25 @@ class BaseService {
         return headers
     }
     
+    func isAuthenticated() -> Bool {
+        return KeyClip.exists(Config.values.tokenKey)
+    }
+    
     func getAuthenticationToken() -> String {
-        if let token = KeyClip.load("authentication_token") as String? {
+        if let token = KeyClip.load(Config.values.tokenKey) as String? {
             return token
         }
         return ""
     }
     
-    func parseBaseResponse(response: BaseResponse?) -> (Bool, String?) {        
+    func removeAuthenticationToken() {
+        _ = KeyClip.delete(Config.values.tokenKey)
+    }
+    
+    func parseBaseResponse(response: BaseResponse?) -> (Bool, String) {
         if let success = response?.success {
             if (success) {
-                return (true, nil)
+                return (true, "")
             } else {
                 if let message = response?.message {
                     return (false, message)
