@@ -5,7 +5,7 @@ A pod for quickly adding SMS Authentication to an iOS app
 
 This is a Cocoapod for quickly adding SMS based authentication to a iOS application. It interacts with the API routes created by the [sms_auth](https://github.com/plattyp/sms_auth) gem. It will let you use the login view controller to add a flow to your iOS application for authentication. 
 
-
+![sms auth run through](https://cloud.githubusercontent.com/assets/5751986/22579958/ee9a0740-e999-11e6-9b56-8fe981e3d938.gif)
 
 If you don't want to use the ViewController. The services are exposed so that you can leverage the mechanisms within your own controllers.
 
