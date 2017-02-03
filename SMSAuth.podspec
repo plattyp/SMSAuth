@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = { "Andrew Platkin" => "andrew.platkin@gmail.com" }
   s.homepage = "https://github.com/plattyp/SMSAuth"
-  s.source = { :git => "git@github.com:plattyp/SMSAuth.git", :tag => "#{s.version}"}
+  s.source = { :git => "https://github.com/plattyp/SMSAuth.git", :tag => "#{s.version}"}
 
   s.dependency 'Alamofire', '4.1.0'
   s.dependency 'BetterBaseClasses', '~> 1.0'

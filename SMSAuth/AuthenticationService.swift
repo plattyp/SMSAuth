@@ -13,7 +13,11 @@ import AlamofireObjectMapper
 
 public class AuthenticationService: SMSAuthBaseService {
     
-    func baseAuthPath() -> String {
+    public override init() {
+        super.init()
+    }
+    
+    public func baseAuthPath() -> String {
         do {
             return try baseApiPath() + "/auth"
         } catch {
@@ -22,7 +26,7 @@ public class AuthenticationService: SMSAuthBaseService {
         return ""
     }
     
-    func login(phoneNum: String, callback:@escaping (Bool, String) -> Void) {
+    public func login(phoneNum: String, callback:@escaping (Bool, String) -> Void) {
         let url = baseAuthPath() + "/login"
         
         let parameters = [
@@ -43,7 +47,7 @@ public class AuthenticationService: SMSAuthBaseService {
         }
     }
     
-    func verifyPhone(verificationToken: String, phoneNum: String, callback:@escaping (Bool, String, Int, Bool) -> Void) {
+    public func verifyPhone(verificationToken: String, phoneNum: String, callback:@escaping (Bool, String, Int, Bool) -> Void) {
         let url = baseAuthPath() + "/verify"
         
         let parameters = [
@@ -88,7 +92,7 @@ public class AuthenticationService: SMSAuthBaseService {
         }
     }
     
-    func logout(callback: @escaping (Bool, String) -> Void) {
+    public func logout(callback: @escaping (Bool, String) -> Void) {
         let url = baseAuthPath() + "/logout"
         
         alamoFireManager.request(url, method: .delete, encoding: JSONEncoding.default, headers: headersWithToken())
