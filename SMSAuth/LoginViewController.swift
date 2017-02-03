@@ -9,6 +9,7 @@
 import UIKit
 import SwiftOverlays
 import BetterBaseClasses
+import Font_Awesome_Swift
 
 public protocol LoginViewDelegate {
     func onLoginSuccess(userId: Int, newUser: Bool)
@@ -74,9 +75,12 @@ public class LoginViewController: BaseViewController, UITextFieldDelegate {
         
         // Allow the view to be closed
         if closeable {
-            let leftBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(onClose))
-            leftBarButton.tintColor = closeColor
-            self.navigationItem.setLeftBarButton(leftBarButton, animated: true)
+            let rightBarButton = UIBarButtonItem()
+            rightBarButton.target = self
+            rightBarButton.action = #selector(onClose)
+            rightBarButton.tintColor = closeColor
+            rightBarButton.setFAIcon(icon: .FATimes, iconSize: 30)
+            self.navigationItem.setRightBarButton(rightBarButton, animated: true)
         }
         
         // Add Main Text Label

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D582E316DB90377418542A5C976CD9AD"
-               BuildableName = "Pods_SMSAuth.framework"
-               BlueprintName = "Pods-SMSAuth"
+               BlueprintIdentifier = "BA453546C51032641C49CACBC22725EE"
+               BuildableName = "Font_Awesome_Swift.framework"
+               BlueprintName = "Font-Awesome-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D582E316DB90377418542A5C976CD9AD"
-            BuildableName = "Pods_SMSAuth.framework"
-            BlueprintName = "Pods-SMSAuth"
+            BlueprintIdentifier = "BA453546C51032641C49CACBC22725EE"
+            BuildableName = "Font_Awesome_Swift.framework"
+            BlueprintName = "Font-Awesome-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

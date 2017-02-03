@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D1FE4EEBF63B92188E17965D6C49874"
+               BlueprintIdentifier = "42E0C34A33B4F196359933645BACDE20"
                BuildableName = "Pods_SMSAuthTests.framework"
                BlueprintName = "Pods-SMSAuthTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D1FE4EEBF63B92188E17965D6C49874"
+            BlueprintIdentifier = "42E0C34A33B4F196359933645BACDE20"
             BuildableName = "Pods_SMSAuthTests.framework"
             BlueprintName = "Pods-SMSAuthTests"
             ReferencedContainer = "container:Pods.xcodeproj">

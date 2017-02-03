@@ -54,10 +54,6 @@
 		4C95F8751E40278C008616E8 /* SquaredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaredButton.swift; sourceTree = "<group>"; };
 		4C95F8771E40296B008616E8 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		4C95F8791E402987008616E8 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		4C95F8B61E405844008616E8 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
-		4C95F8B71E405861008616E8 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
-		4C95F8B81E40586F008616E8 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		4C95F8B91E405888008616E8 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		4C95F8BA1E419B39008616E8 /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		4C95F8BD1E419C03008616E8 /* CrossIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CrossIcon.pdf; sourceTree = "<group>"; };
 		6488A4EE05F60B7107DC4D07 /* Pods-SMSAuthTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMSAuthTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SMSAuthTests/Pods-SMSAuthTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				4C95F8BC1E419BDB008616E8 /* Images */,
-				4C95F8B51E4057DB008616E8 /* Fonts */,
 				4C95F8741E402762008616E8 /* Views */,
 				4C95F86F1E3EF85E008616E8 /* Exceptions */,
 				4C95F8641E3EDA3E008616E8 /* Models */,
@@ -177,17 +172,6 @@
 				4C95F8BA1E419B39008616E8 /* NotificationView.swift */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		4C95F8B51E4057DB008616E8 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4C95F8B81E40586F008616E8 /* OpenSans-Light.ttf */,
-				4C95F8B91E405888008616E8 /* OpenSans-Italic.ttf */,
-				4C95F8B71E405861008616E8 /* OpenSans-Semibold.ttf */,
-				4C95F8B61E405844008616E8 /* OpenSans-Regular.ttf */,
-			);
-			name = Fonts;
 			sourceTree = "<group>";
 		};
 		4C95F8BC1E419BDB008616E8 /* Images */ = {

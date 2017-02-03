@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.dependency 'KeyClip', '1.4.0'
   s.dependency 'AlamofireObjectMapper', '4.0.1'
   s.dependency 'SwiftOverlays', '~> 3.0.0'
+  s.dependency 'Font-Awesome-Swift', '~> 1.6.0'
 
   s.source_files = "SMSAuth", "SMSAuth/**/*.{swift,h,m}"
   s.resources = "SMSAuth/**/*.{png,jpeg,jpg,pdf,storyboard,xib,ttf}"
