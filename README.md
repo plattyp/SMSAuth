@@ -19,6 +19,8 @@ Then use `pod install` in your terminal to install it within your project
 
 ### Setting Up
 
+#### For Opening The App
+
 If you are setting this up to be the first bit of authentication when accessing your app (e.g. it'll open directly to it and will redirect back to it on logout), then you will set it up within your AppDelegate.swift file
 
 Import the SMSAuth library at the top of your AppDelegate
@@ -75,3 +77,30 @@ func onLoginSuccess(userId: Int, newUser: Bool) {
 }
 
 ```
+#### Handling Logging Out
+
+Within the authenticated part of the application you will need to import the SMSAuth library in a ViewController that will offer the ability to logout.
+
+```swift
+import UIKit
+import SMSAuth
+```
+
+Then create a function that is a target of a button that will use the helper method to logout and revert back to the logout screen
+
+```swift
+func logout() {
+    SMSAuth.logout(callback: {
+        (success, message) -> Void in
+            
+        if (success) {
+            SMSAuth.revertToLogin()
+        } else {
+            print("REPORT ERROR: " + message)
+        }
+    })
+}
+```
+
+
+
