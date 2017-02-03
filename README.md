@@ -9,6 +9,10 @@ This is a Cocoapod for quickly adding SMS based authentication to a iOS applicat
 
 If you don't want to use the ViewController. The services are exposed so that you can leverage the mechanisms within your own controllers.
 
+## How it works?
+
+It makes calls to the various `/login`, `/verify`, and `/logout` endpoints provided by [sms_auth](https://github.com/plattyp/sms_auth) on your API. It stores the authentication token received within the application's Keychain.
+
 ## Installation
 
 ### Import Pod
@@ -21,7 +25,7 @@ pod 'SMSAuth'
 
 Then use `pod install` in your terminal to install it within your project
 
-### Setting Up
+### Setting Up View Controller
 
 #### For Opening The App
 
@@ -30,7 +34,6 @@ If you are setting this up to be the first bit of authentication when accessing 
 Import the SMSAuth library at the top of your AppDelegate
 
 ```swift
-import UIKit
 import SMSAuth
 
 ```
@@ -86,7 +89,6 @@ func onLoginSuccess(userId: Int, newUser: Bool) {
 Within the authenticated part of the application you will need to import the SMSAuth library in a ViewController that will offer the ability to logout.
 
 ```swift
-import UIKit
 import SMSAuth
 ```
 
@@ -106,5 +108,39 @@ func logout() {
 }
 ```
 
+### Just Services
+
+If you want to implement your own ViewController instead of using the one provided, you can access all service functions via the AuthenticationService.
+
+Import the library in your ViewController.
+
+```swift
+import SMSAuth
+```
+
+Instantiate the service object.
+
+```swift
+let authService = AuthenticationService()
+```
+
+You should see 3 functions available. The first 2 return params are Status and Message. For verifyPhone, it returns `userId` and `newUser` as well.
+
+```swift
+func login(phoneNum: String, callback:@escaping (Bool, String) -> Void)
+func verifyPhone(verificationToken: String, phoneNum: String, callback:@escaping (Bool, String, Int, Bool) -> Void)
+func logout(callback: @escaping (Bool, String) -> Void)
+
+```
+They will maintain state as well for you. So if you need to know if a user is authenticated at any point. All you need is the isAuthenticated function.
+
+```swift
+SMSAuth.isAuthenticated()
+```
+If you need the token for other calls to other endpoints within your app.
+
+```swift
+SMSAuth.authenticationToken()
+```
 
 
