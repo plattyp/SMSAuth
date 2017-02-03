@@ -11,7 +11,7 @@ import KeyClip
 import Alamofire
 import AlamofireObjectMapper
 
-class AuthenticationService: BaseService {
+public class AuthenticationService: SMSAuthBaseService {
     
     func baseAuthPath() -> String {
         do {

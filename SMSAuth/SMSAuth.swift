@@ -31,6 +31,13 @@ public class SMSAuth {
         return KeyClip.exists(Config.values.tokenKey)
     }
     
+    public class func authenticationToken() -> String {
+        if let token = KeyClip.load(Config.values.tokenKey) as String? {
+            return token
+        }
+        return ""
+    }
+    
     public class func logout(callback: @escaping (Bool, String) -> Void) {
         AuthenticationService().logout(callback: callback)
     }

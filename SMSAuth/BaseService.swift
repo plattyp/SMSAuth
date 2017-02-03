@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import KeyClip
 
-class BaseService {
+public class SMSAuthBaseService {
     
     let headersWithoutToken = [
         "Accept": "application/json",
@@ -40,14 +40,11 @@ class BaseService {
     }
     
     func isAuthenticated() -> Bool {
-        return KeyClip.exists(Config.values.tokenKey)
+        return SMSAuth.isAuthenticated()
     }
     
     func getAuthenticationToken() -> String {
-        if let token = KeyClip.load(Config.values.tokenKey) as String? {
-            return token
-        }
-        return ""
+        return SMSAuth.authenticationToken()
     }
     
     func removeAuthenticationToken() {
